@@ -28,15 +28,17 @@ public class WalmartClient {
 
     //constructor
     public WalmartClient(){
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        InputStream input = classLoader.getResourceAsStream("config.properties");
-        Properties properties = new Properties();
-        try {
-            properties.load(input);
-            API_KEY_WALMART = properties.getProperty("wallmart_api_key");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    	API_KEY_WALMART = System.getenv("WALLMART_API_KEY");
+    	
+//        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//        InputStream input = classLoader.getResourceAsStream("config.properties");
+//        Properties properties = new Properties();
+//        try {
+//            properties.load(input);
+//            API_KEY_WALMART = properties.getProperty("wallmart_api_key");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 

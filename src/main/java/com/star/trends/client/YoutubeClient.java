@@ -26,15 +26,17 @@ public class YoutubeClient {
 	private static String API_KEY = "";
 	
 	public YoutubeClient() {
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream input = classLoader.getResourceAsStream("config.properties");
-		Properties properties = new Properties();
-		try {
-			properties.load(input);
-			API_KEY = properties.getProperty("youtube_key");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		API_KEY = System.getenv("YOUTUBE_KEY");
+		
+//		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//		InputStream input = classLoader.getResourceAsStream("config.properties");
+//		Properties properties = new Properties();
+//		try {
+//			properties.load(input);
+//			API_KEY = properties.getProperty("youtube_key");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 	public com.star.trends.model.Trends getTopVideos(String regionCode, String maxResults, String chart) {
 		com.star.trends.model.Trends trendsList = new com.star.trends.model.Trends();

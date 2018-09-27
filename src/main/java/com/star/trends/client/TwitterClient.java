@@ -22,19 +22,24 @@ public class TwitterClient {
 	private static String ACCESS_TOKEN = "";
 	private static String ACCESS_TOKEN_SECRET = "";
 	
-	public TwitterClient() {		
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream input = classLoader.getResourceAsStream("config.properties");
-		Properties properties = new Properties();
-		try {
-			properties.load(input);
-	        CONSUMER_KEY = properties.getProperty("twitter_consumer_key");
-	        CONSUMER_SECRET = properties.getProperty("twitter_consumer_secret");
-	        ACCESS_TOKEN = properties.getProperty("twitter_access_token");
-	        ACCESS_TOKEN_SECRET = properties.getProperty("twitter_access_token_secret");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public TwitterClient() {
+		ACCESS_TOKEN = System.getenv("TWITTER_ACCESS_TOKEN");
+		ACCESS_TOKEN_SECRET = System.getenv("TWITTER_ACCESS_TOKEN_SECRET");
+		CONSUMER_KEY = System.getenv("TWITTER_CONSUMER_KEY");
+		CONSUMER_SECRET = System.getenv("TWITTER_CONSUMER_SECRET");
+				
+//		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//		InputStream input = classLoader.getResourceAsStream("config.properties");
+//		Properties properties = new Properties();
+//		try {
+//			properties.load(input);
+//	        CONSUMER_KEY = properties.getProperty("twitter_consumer_key");
+//	        CONSUMER_SECRET = properties.getProperty("twitter_consumer_secret");
+//	        ACCESS_TOKEN = properties.getProperty("twitter_access_token");
+//	        ACCESS_TOKEN_SECRET = properties.getProperty("twitter_access_token_secret");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 	
 	public com.star.trends.model.Trends getTrendsFromLocation(String loc){

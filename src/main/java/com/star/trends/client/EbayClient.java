@@ -27,15 +27,17 @@ public class EbayClient {
 
     //constructor
     public EbayClient(){
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        InputStream input = classLoader.getResourceAsStream("config.properties");
-        Properties properties = new Properties();
-        try {
-            properties.load(input);
-            COMSUMER_ID = properties.getProperty("ebay_customer_id");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    	COMSUMER_ID = System.getenv("EBAY_CUSTOMER_ID");
+    	
+//        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//        InputStream input = classLoader.getResourceAsStream("config.properties");
+//        Properties properties = new Properties();
+//        try {
+//            properties.load(input);
+//            COMSUMER_ID = properties.getProperty("ebay_customer_id");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 
